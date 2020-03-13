@@ -1,0 +1,11 @@
+# 详情请参考：https://halo.run/develop/theme.html#theme-yaml
+id: arcinbj
+name: 在码圈
+author:
+  name: arcinbj
+  website: https://www.arcinbj.com
+description: 大道至简
+logo:
+website: https://github.com/hiparker/halo-theme-arcinbj
+repo: https://github.com/hiparker/halo-theme-arcinbj
+version: 1.0
