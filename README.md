@@ -9,7 +9,7 @@
 
 [主题指南](https://baozi.fun/archives/theme-manual)
 
-[预览地址](https://baozi.fun)
+[预览地址](https://www.arcinbj.com)
 
 ## 已实现功能 
 * [x] 日志页面
