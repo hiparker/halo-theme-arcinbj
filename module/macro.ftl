@@ -1,39 +1,37 @@
-<#macro layout title,keywords,description>
+<#macro layout title>
     <!DOCTYPE html>
     <html lang="zh">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="title" content="${title}">
+        <meta name="title" content="${title}">
         <meta name="keywords" content="${keywords!}"/>
         <meta name="description" content="${description!}"/>
 		<meta name="author" content="Parker Zhou">
  		<meta name="baidu-site-verification" content="TLWNFXCXPu" />
         <meta name="google-site-verification" content="tO5_VslQMF4eI4nZVFb4X-YRGhTDmmk2_gDRGQTuoKQ" />
-
+        <!-- <title>${title}</title> -->
+        <title>${title}</title>
+      
         <@global.head />
 
-        <link rel="stylesheet" href="${static!}/assets/styles/main.min.css">
-        <link rel="stylesheet" href="${static!}/assets/styles/night-mode.min.css">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type='text/css'
-              media='all'/>
+        <link rel="stylesheet" href="${theme_base!}/assets/styles/main.min.css?ver=${.now?long}">
+        <link rel="stylesheet" href="${theme_base!}/assets/styles/night-mode.min.css?ver=${.now?long}">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type='text/css' media='all'/>
 
-        <#if is_post??>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/viewerjs@1.5.0/dist/viewer.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
-        <#else>
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-            <link rel="stylesheet"
-                  href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-        </#if>
-
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/viewerjs@1.5.0/dist/viewer.min.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
 
         <style>
             :root {
-                --post-max-width: ${settings.post_max_wdth?default('800px')} !important;
-                --content-font-size: ${settings.content_font_size?default('1.12rem')} !important;
-                --base-color: ${settings.base_color?default('#2474b5')};
+                --post-max-width: ${settings.post_max_wdth!'800px'} !important;
+                --content-font-size: ${settings.content_font_size!'1.12rem'} !important;
+                --base-color: ${settings.base_color!'#2474b5'};
+                --toc-bg-color: #8e8787;
+                --night-toc-bg-color:#e5e5e5;
                 --tag-bg-color: #ff5f5f;
                 --header-bg-color: #fff;
                 --header-child-hover-bg-color: #f5f5f5;
@@ -116,17 +114,32 @@
             </#if>
 
             <#if settings.enabled_visual_height!true>
-                @media only screen and (min-width: 861px) {
-                    .post-template .cover {
-                        height: 100vh !important;
-                    }
+            @media only screen and (min-width: 861px) {
+                .post-template .bg-cover {
+                    height: 100vh !important;
                 }
+            }
+
+            </#if>
+
+            <#if settings.enabled_index_cover_height!true>
+            @media only screen and (min-width: 861px) {
+                .home-content .bg-cover {
+                    height: 100vh !important;
+                }
+            }
+
             </#if>
 
         </style>
         <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css">
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/loaders.css@0.1.2/loaders.min.css">
-
+<#--        <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/loaders.css@0.1.2/loaders.min.css">-->
+        <#if settings.Aplayer?? && settings.Aplayer != ''>
+            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+        </#if>
+        <#if settings.enabled_mathjax!true>
+            <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" >
+        </#if>
         <#if settings.Custom_css_src??>
             <!-- 自定义css -->
             <link rel="stylesheet" href="${settings.Custom_css_src!}">
@@ -145,11 +158,20 @@
             </script>
         </#if>
 
-        <!-- <title>${title}</title> -->
-        <title>${title}</title>
+        <!-- 广告样式-->
+        <link rel="stylesheet" href="${static!}/assets/styles/ad.css">
+        <!-- 谷歌广告 -->
+        <script data-ad-client="ca-pub-4567362051490626" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>          
     </head>
+    <body>
+    <#include "header.ftl">
+
     <#nested >
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+    <#include "footer.ftl">
+    </body>
+    <script src="//cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+    <script src="${theme_base!}/assets/media/scripts/utils.min.js?ver=${.now?long}"></script>
     <#include "script.ftl">
     </html>
 </#macro>

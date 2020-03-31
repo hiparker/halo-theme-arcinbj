@@ -1,13 +1,9 @@
 <#include "module/macro.ftl">
-<@layout title="${sheet.title!} |${options.blog_title!} " keywords="${options.seo_keywords!}" description="${options.seo_description!}">
-    <body class="sheet-template">
+<@layout title="${sheet.title!} |${blog_title!} ">
     <div id="page" class="site">
-
-        <#include "module/header.ftl">
-
-        <main class="site-main">
+        <main class="site-main" id="main">
             <div class="site-content">
-                <header class="cover page-header">
+                <header class="bg-cover page-header">
                     <#if sheet.thumbnail?? && sheet.thumbnail!=''>
                         <div class="cover-bg">
                             <img src="${sheet.thumbnail!}" alt="${sheet.title!}">
@@ -27,9 +23,12 @@
                     ${sheet.formatContent!}
                 </div>
             </div>
-            <#include "module/footer.ftl">
+            <#include "module/comment.ftl">
+            <#if is_post??>
+                <@comment post,"post" />
+            <#elseif is_sheet??>
+                <@comment sheet,"sheet" />
+            </#if>
         </main>
     </div>
-    </body>
-
 </@layout>

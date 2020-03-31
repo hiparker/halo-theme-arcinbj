@@ -1247,6 +1247,8 @@ pre .storage {
   height: 100%;
   background-color: #ffffff;
   padding-top: 52px;
+  opacity: 1 !important;
+  display: block !important;
 }
 
 .sidebar .inner {
@@ -1427,7 +1429,7 @@ pre .storage {
  * ----------------------------------------------------------------------------
  */
 
-.cover {
+.bg-cover {
   background-color: #101012;
   display: table;
   height: 480px;
@@ -1457,7 +1459,7 @@ pre .storage {
 
 .default-cover-bg {
   //linear-gradient( 135deg, #43CBFF 10%, #9708CC 100%);
-  background: linear-gradient(-45deg, #ee7752, #43CBFF, #9708CC, #23d5ab);;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
   -webkit-animation: gradientBG 15s ease infinite;
   -moz-animation: gradientBG 15s ease infinite;
@@ -1482,7 +1484,7 @@ pre .storage {
   padding-top: 135px;
 }
 
-.cover .arrow-down {
+.bg-cover .arrow-down {
   -webkit-animation-duration: 2s;
   animation-duration: 2s;
   -webkit-animation-name: blink;
@@ -1495,8 +1497,8 @@ pre .storage {
   position: absolute;
 }
 
-.cover .arrow-down:before,
-.cover .arrow-down:after {
+.bg-cover  .arrow-down:before,
+.bg-cover .arrow-down:after {
   background-color: #ffffff;
 }
 
@@ -1823,9 +1825,9 @@ pre .storage {
 }
 
 @media only screen and (min-width: 861px) {
-  .home-template .cover {
-    height: 100vh;
-  }
+  //.home-content .cover {
+  //  height: 100vh;
+  //}
 
   .hero .cover-content,
   .post-header .cover-content {
@@ -1913,7 +1915,7 @@ pre .storage {
 }
 
 @media only screen and (max-width: 860px) {
-  .cover .arrow-down {
+  .bg-cover .arrow-down {
     display: none;
   }
 
@@ -1990,11 +1992,13 @@ pre .storage {
 
 .comments-area {
   border-top: 1px solid #d4d3d3;
+  padding: 0 5%;
 }
 
 .article-info .comments-area {
   max-width: var(--post-max-width);
   margin: 0 auto;
+  padding: 0 !important;
 }
 
 #comments-show {
@@ -2614,3 +2618,20 @@ pre .storage {
 }
 
 
+.loader {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+}
+
+.transform-none{
+  -moz-transform: none !important;
+  -webkit-transform: none !important;
+  -o-transform: none !important;
+  -ms-transform: none !important;
+  transform: none !important;
+}
+
+.post-standard-block {
+  display: block !important;
+}
